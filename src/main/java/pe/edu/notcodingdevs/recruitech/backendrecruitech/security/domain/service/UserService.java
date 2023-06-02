@@ -8,6 +8,5 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.service
 public interface UserService extends UserDetailsService {
     ResponseEntity<?> authenticate(LoginRequest request);
     ResponseEntity<?> register(RegisterRequest request);
-
     ResponseEntity<?> logout();
 }

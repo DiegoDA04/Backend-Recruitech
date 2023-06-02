@@ -10,4 +10,7 @@ public class MappingConfiguration {
     public DeveloperMapper developerMapper(){
         return new DeveloperMapper();
     }
+
+    @Bean
+    public CompanyMapper companyMapper(){ return new CompanyMapper();}
 }

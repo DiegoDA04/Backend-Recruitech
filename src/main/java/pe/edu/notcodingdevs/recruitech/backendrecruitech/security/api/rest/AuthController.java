@@ -1,5 +1,6 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.api.rest;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.service
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/v1/auth")
+@Tag(name = "Authentication", description = "Companies information")
 public class AuthController {
     private final UserService userService;
 
