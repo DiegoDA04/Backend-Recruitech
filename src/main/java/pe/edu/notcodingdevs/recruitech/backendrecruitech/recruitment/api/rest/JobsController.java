@@ -11,8 +11,6 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment.mapping.Job
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment.resource.CreateJobResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment.resource.JobResource;
 
-
-
 @RestController
 @RequestMapping("/api/v1/jobs")
 @Tag(name = "Job Lists", description = "No se mano pipipi")
