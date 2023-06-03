@@ -1,7 +1,8 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment.service;
 
 import jakarta.validation.Validator;
 import org.springframework.stereotype.Service;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.model.entity.Company;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment.domain.model.entity.Job;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment.domain.persistence.JobRepository;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.recruitment.domain.service.JobService;
@@ -28,7 +29,10 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job create(Job job) {
+    public Job create(Job job, Company company) {
+        job.setCompany(company);
+
         return jobRepository.save(job);
     }
+
 }

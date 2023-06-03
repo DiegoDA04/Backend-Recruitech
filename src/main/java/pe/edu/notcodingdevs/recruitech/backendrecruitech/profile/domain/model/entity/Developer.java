@@ -37,8 +37,4 @@ public class Developer extends AuditModel {
 
     @Length(max = 240)
     private String description;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
 }

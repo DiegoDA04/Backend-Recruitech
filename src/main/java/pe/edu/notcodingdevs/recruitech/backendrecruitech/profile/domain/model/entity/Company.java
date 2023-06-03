@@ -33,7 +33,7 @@ public class Company extends AuditModel {
     @Length(max = 40)
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER, mappedBy = "company")
+    private Set<Job> jobs = new HashSet<>();
 }

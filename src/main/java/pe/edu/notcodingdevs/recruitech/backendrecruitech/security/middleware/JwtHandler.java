@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.security.SignatureException;
+
 import java.util.Date;
 
 @Component
@@ -19,7 +19,7 @@ public class JwtHandler {
     private String jwtSecret;
 
     @Value("${authorization.jwt.expiration.days}")
-    private int jwtExpirationDays;
+    private Long jwtExpirationDays;
 
     public String getUsernameFromJwtToken(String token) {
 

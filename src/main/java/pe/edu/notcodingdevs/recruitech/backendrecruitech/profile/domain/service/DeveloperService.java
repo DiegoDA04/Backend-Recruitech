@@ -6,8 +6,10 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.model.e
 import java.util.List;
 
 public interface DeveloperService {
-    Developer getByUsername(String username);
-    List<Developer> getAllDevelopersByFirstNameWithContains(String name);
 
     Developer createDeveloper(Developer developer);
+
+    Developer getById(Long developerId);
+
+    List<Developer> getAll();
 }

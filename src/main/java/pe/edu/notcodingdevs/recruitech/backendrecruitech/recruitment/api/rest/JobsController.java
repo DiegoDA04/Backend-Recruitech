@@ -29,8 +29,4 @@ public class JobsController {
         return mapper.modelListPage(jobService.getAll(),pageable);
     }
 
-    @PostMapping
-    public ResponseEntity<?> createJob(@RequestBody CreateJobResource resource) {
-        return new ResponseEntity<>(jobService.create(mapper.toModel(resource)), HttpStatus.CREATED);
-    }
 }

@@ -40,11 +40,7 @@ public class User extends AuditModel {
     private String password;
 
     // ONE-TO-ONE RELATIONSHIP
-    @OneToOne(mappedBy = "user")
-    private Developer developer;
 
-    @OneToOne(mappedBy = "user")
-    private Company company;
 
     // MANY-TO-MANY RELATIONSHIP
     @ManyToMany(fetch = FetchType.EAGER)

@@ -30,4 +30,9 @@ public class Job {
     @NotNull
     @NotBlank
     private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "company_id", nullable = false)
+    @JsonIgnore
+    private Company company;
 }

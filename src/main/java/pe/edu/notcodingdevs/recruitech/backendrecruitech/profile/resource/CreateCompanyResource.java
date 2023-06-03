@@ -18,7 +18,4 @@ public class CreateCompanyResource {
     @NotBlank
     @Length(max = 40)
     private String name;
-
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "company"})
-    private User user;
 }

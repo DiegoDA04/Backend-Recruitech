@@ -119,7 +119,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<?> logout() {
+    public ResponseEntity<?>    logout() {
         return null;
     }
 

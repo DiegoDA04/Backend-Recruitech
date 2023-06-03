@@ -1,6 +1,8 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.api.rest;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,20 +23,19 @@ public class DevelopersController {
         this.developerService = developerService;
         this.mapper = mapper;
     }
-    @GetMapping("{userName}")
-    @PreAuthorize("hasRole('USER')")
-    public DeveloperResource getByUsername(@PathVariable String userName) {
-        return mapper.toResource(developerService.getByUsername(userName));
-    }
-
-    @GetMapping("/test")
-    @PreAuthorize("hasRole('USER')")
-    public String test(){
-        return  "Test";
-    }
 
     @PostMapping
-    public ResponseEntity<DeveloperResource> createDeveloper(@RequestBody CreateDeveloperResource resource) {
+    public ResponseEntity<?> createDeveloper(@RequestBody CreateDeveloperResource resource) {
         return new ResponseEntity<>(mapper.toResource(developerService.createDeveloper(mapper.toModel(resource))),HttpStatus.CREATED);
+    }
+
+    @GetMapping("{developerId}")
+    public ResponseEntity<DeveloperResource> getDeveloperById(@PathVariable Long developerId) {
+        return new ResponseEntity<>(mapper.toResource(developerService.getById(developerId)), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<DeveloperResource>> getAllDevelopers(Pageable pageable) {
+        return new ResponseEntity<>(mapper.modelListPage(developerService.getAll(), pageable), HttpStatus.OK);
     }
 }

@@ -24,23 +24,19 @@ public class DeveloperServiceImpl implements DeveloperService {
         this.validator = validator;
     }
 
-
-    @Override
-    public Developer getByUsername(String username) {
-        return developerRepository.findByUserUsername(username).orElseThrow(() -> new ResourceNotFoundException(ENTITY));
-    }
-
-    @Override
-    public List<Developer> getAllDevelopersByFirstNameWithContains(String name) {
-        return developerRepository.findAllByFirstNameContains(name);
-    }
-
     @Override
     public Developer createDeveloper(Developer developer) {
-        User user = userRepository.findByUsername(developer.getUser().getUsername()).orElseThrow(() -> new ResourceNotFoundException("User"));
-
-        developer.setUser(user);
 
         return developerRepository.save(developer);
+    }
+
+    @Override
+    public Developer getById(Long developerId) {
+        return developerRepository.findById(developerId).orElseThrow(() -> new ResourceNotFoundException(ENTITY, developerId));
+    }
+
+    @Override
+    public List<Developer> getAll() {
+        return developerRepository.findAll();
     }
 }
