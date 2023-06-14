@@ -13,4 +13,9 @@ public class MappingConfiguration {
 
     @Bean
     public CompanyMapper companyMapper(){ return new CompanyMapper();}
+
+    @Bean
+    public LocationMapper locationMapper(){
+        return new LocationMapper();
+    }
 }

@@ -1,5 +1,6 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -36,5 +37,26 @@ public class Developer extends AuditModel {
     private String lastName;
 
     @Length(max = 240)
-    private String description;
+    private String about;
+
+    @NotNull
+    @NotBlank
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @Column(name = "birth_date")
+    private String birthDate;
+
+    @NotNull
+    @NotBlank
+    private String gender;
+
+    @Column(name = "photo_url")
+    private String photoUrl;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "location_id")
+    private Location location;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }
