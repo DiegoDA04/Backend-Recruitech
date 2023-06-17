@@ -14,5 +14,6 @@ public interface DeveloperService {
 
     Developer getByUserEmail(String email);
 
+    Developer getByUserId(Long id);
     List<Developer> getAll();
 }

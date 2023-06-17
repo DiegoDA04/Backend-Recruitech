@@ -27,9 +27,9 @@ public class DevelopersController {
         return new ResponseEntity<>(mapper.toResource(developerService.getById(developerId)), HttpStatus.OK);
     }
 
-    @GetMapping("{developerId}/profile")
-    public ResponseEntity<DeveloperResource> getDeveloperProfileById(@PathVariable Long developerId) {
-        return new ResponseEntity<>(mapper.toResource(developerService.getById(developerId)), HttpStatus.OK);
+    @GetMapping("{userId}/profile")
+    public ResponseEntity<DeveloperResource> getDeveloperProfileByUserId(@PathVariable Long userId) {
+        return new ResponseEntity<>(mapper.toResource(developerService.getById(userId)), HttpStatus.OK);
     }
     @GetMapping
     public ResponseEntity<Page<DeveloperResource>> getAllDevelopers(Pageable pageable) {
