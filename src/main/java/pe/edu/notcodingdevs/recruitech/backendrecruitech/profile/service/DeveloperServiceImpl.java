@@ -46,6 +46,13 @@ public class DeveloperServiceImpl implements DeveloperService {
     }
 
     @Override
+    public Developer getByUserId(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
+
+        return developerRepository.findByUserId(user.getId());
+    }
+
+    @Override
     public List<Developer> getAll() {
         return developerRepository.findAll();
     }
