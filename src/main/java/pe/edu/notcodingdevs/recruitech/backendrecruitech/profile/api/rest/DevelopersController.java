@@ -29,7 +29,7 @@ public class DevelopersController {
 
     @GetMapping("{userId}/profile")
     public ResponseEntity<DeveloperResource> getDeveloperProfileByUserId(@PathVariable Long userId) {
-        return new ResponseEntity<>(mapper.toResource(developerService.getById(userId)), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.toResource(developerService.getByUserId(userId)), HttpStatus.OK);
     }
     @GetMapping
     public ResponseEntity<Page<DeveloperResource>> getAllDevelopers(Pageable pageable) {
