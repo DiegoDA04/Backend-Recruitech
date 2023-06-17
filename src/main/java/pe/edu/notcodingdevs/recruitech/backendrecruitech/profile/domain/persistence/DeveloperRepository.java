@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer, Long> {
     List<Developer> findAllByFirstNameContains(String name);
+
+    Developer findByUserEmail(String email);
 }

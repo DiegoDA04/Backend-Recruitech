@@ -1,6 +1,7 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,6 +25,7 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.middleware.Jwt
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.middleware.UserDetailsImpl;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.resource.AuthenticateResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.resource.UserResource;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.exception.ResourceNotFoundException;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.mapping.EnhancedModelMapper;
 
 import java.util.HashSet;
@@ -110,8 +112,9 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
             UserResource userResource = mapper.map(user, UserResource.class);
             RegisterResponse response = new RegisterResponse(userResource);
+            response.setMessage("The user has been created successfully");
 
-            return ResponseEntity.ok(response.getResource());
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (Exception e) {
             RegisterResponse response = new RegisterResponse(e.getMessage());
             return ResponseEntity.badRequest().body(response.getMessage());
@@ -119,8 +122,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<?>    logout() {
+    public ResponseEntity<?> logout() {
         return null;
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User"));
     }
 
     @Override

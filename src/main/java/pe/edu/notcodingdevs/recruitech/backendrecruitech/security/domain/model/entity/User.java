@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.model.entity.Company;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.model.entity.Developer;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.domain.model.AuditModel;
 
@@ -40,7 +39,8 @@ public class User extends AuditModel {
     private String password;
 
     // ONE-TO-ONE RELATIONSHIP
-
+    @OneToOne(mappedBy = "user")
+    private Developer developer;
 
     // MANY-TO-MANY RELATIONSHIP
     @ManyToMany(fetch = FetchType.EAGER)

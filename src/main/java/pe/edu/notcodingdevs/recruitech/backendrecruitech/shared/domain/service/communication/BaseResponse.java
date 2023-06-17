@@ -1,9 +1,11 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.domain.service.communication;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.logging.log4j.util.Strings;
 
 @Getter
+@Setter
 public class BaseResponse<T> {
     private boolean success;
     private String message;
